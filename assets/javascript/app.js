@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+//Object which holds the questions and the answers
+
 var quiz = { 
     questions: [{
       question: "Which is the core component of the computer? It computes every operation you want?",
@@ -19,57 +21,58 @@ var quiz = {
       answer: "1976"
       }]
     }
+
+    //Variable for time and right and wrong answers
 var qtimer= 30;
 var intervalId;
 var correctAnswers = 0;
-var incorectAnswers = 0;
+var incorrectAnswers = 0;
      
+    //This function displays the question and multiple choice on the page
   function nextQuestion() {
        
-            //Create loop to cycle through questions and answers
+    //Create loop to cycle through questions and answers
     for (var i = 0; i < quiz.questions.length; i++) {
      
-      //Display question
-     
+      //Display questions
       var questDiv = $("<div>");
       questDiv.text = quiz.questions[i].question;
           console.log(questDiv.text);
-          // console.log(this);
+
       var ask = $("<div>").text(questDiv.text);
-    
       $("#question-line").append(ask);    
 
-      // $("#tasks").append("<div>" + task + "<span id='delete'>X</span></div>");
-      // Display answer choices
-
+      //Loop to display answer choices
       for (var j = 0; j < quiz.questions[i].choices.length; j++) {
-        
-        var answerList = $("<li>");
+           var answerList = $("<li>");
         answerList.text = quiz.questions[i].choices[j];
             console.log(answerList.text);
+
         var choice = $("<li>").text(answerList.text);
         $(".choices").append(choice);
         
+        //Add class to choices for on click function
         // choice.addClass("abcd");
-
         $(choice).attr("class", "abcd");
         };
       };
-             //set countdown
+        //Set countdown clock
         countDownClock();
 
+          //Capture user clicks
       $(".abcd").on('click', function(event) {
         console.log("you clicked");
 
          //check if the clicked item was the correct answer
         for (var k = 0; k < quiz.questions.length; k++) {
-
-        if (quiz.questions.choices[k] === quiz.questions.choices.answer) {
+          if (quiz.questions.choices[k] === quiz.questions.choices.answer) {
         
+        //Increment correct answers
         correctAnswers++; 
           console.log(correctAnswers);
       }
         else {
+          //Increment incorrect answers
         incorrectAnswers++
          console.log(correctAnswers);
         }}
@@ -78,29 +81,33 @@ var incorectAnswers = 0;
         console.log(this);
       }
   
-
+      //Create countdown clock
   function countDownClock() {
       clearInterval(intervalId);
       intervalId = setInterval(decrementClock, 1000);
     }
-
-    function decrementClock() {
+      //Decrement clock
+  function decrementClock() {
       qtimer--;
-      //  Show the number in the #show-number tag.
+
+      //  Show the countdown in the #count-down tag.
       $("#count-down").html("<h2>" + qtimer + "</h2>");
      if (qtimer === 0) {
-        // stop();
+       
         //  Alert the user that time is up.
         alert("Time Up!");
         
+        //Reset clock
         qtimer = 30;
         alert("Correct Answers" + correctAnswers + "Incorrect Answers" + incorrectAnswers);
         start();
       }
     }
-
+      //Handles the initial start button click by the user 
   function start() {
     $("#start-button").remove();
+
+    //Empty the question and choices section of the page
     // $("#question-line").empty();
     // $(".choices").empty();
     $("#time-left").html("<p>Time Remaining</p>");
@@ -112,9 +119,9 @@ var incorectAnswers = 0;
   $("#start-button").on("click", function() {
     start(); 
   });
-  // console.log (quiz.questions);
+ 
   
-  
+ // --- PSEUDO CODE OUTLINE ---- 
 //   Timer set 30secs
 //   When Time runs out - Times up
   
