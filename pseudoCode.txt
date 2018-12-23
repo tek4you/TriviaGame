@@ -1,0 +1,91 @@
+Trivia Game
+
+Welcome to Trivia Game!  You will be presented with 10 questions. You will be allowed up to 20 seconds to answer each question.  After 20 secs your answer will be marked wrong.  Let's see how many you can get right.
+
+
+
+
+var quiz { 
+  questions: [{
+	question0: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}, {
+	question1: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}, {
+	question2: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}, {
+	question3: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}, {
+	question4: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}, {
+	question5: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}, {
+	question6: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}, {
+	question7: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}, {
+	question8: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}, {
+	question9: questionText,
+	choices: [a, b, c, d],
+	answer: 
+	}]
+}
+For loop to iterate through all the questions
+Present question[i]
+
+Timer set 20secs
+When Time runs out - Times up
+
+On click
+Grab event/item that was clicked
+ check answer if Answer matches 
+
+	Congratulations gif
+Set time 5 secs go to next iteration
+
+	Else sorry Gif
+Set time 5 secs go to next iteration
+Next question
+
+<div style="display: none;" id="hiddenText">This is hidden</div>
+<a href="#" onclick="$('#hiddenText').show(); return false;">Click here to show hidden text</a>
+
+
+
+
+Once loop is done display total wins total loses and initialize button
+
+Hint:
+// choiceButton.on('click', this.checkAnswers.bind(this)); <-- this line from before
+// will give you access to BOTH the event (parameter 0) and the game (context variable -> this)
+// and then later on you can...
+
+
+// if you ever need more information on a click event that has been bound
+// add the event parameter
+checkAnswers: function (event) {
+	console.log({
+		game: this, // your bound game target
+		clickedThing: event.target // the thing you clicked on
+	});
+	// other code goes here
+	// ...
+}

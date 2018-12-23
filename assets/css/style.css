@@ -1,0 +1,59 @@
+body {
+    background-position: center center;
+    
+    background: url(../images/question-marks-background.jpg);
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+#count-down {
+    color: red;
+    font-size: 40px;
+    margin-left: 20%;
+    /* display: none; */
+    /* float: left; */
+}
+.blubtn {
+    margin-left: 20%;
+}
+#title {
+    margin-left: 20%;
+    color: rgb(54, 141, 223);
+}
+
+#question-line {
+    color: white;
+    font-size: 20px;
+    margin-left: 20%;
+    /* display: none; */
+    /* clear: left; */
+}
+
+#time-left {
+    color: white;
+    font-size: 30px;
+    margin-left: 20%;
+    /* display: none; */
+    /* float: left; */
+
+}
+
+#seconds {
+    color: white;
+    margin-left: 20%;
+    /* display: none; */
+    /* float: left; */
+
+}
+#choices {
+    color: white;
+    font-size: 20px;
+    margin-left: 20%;
+    /* display: none; */
+
+
+}
