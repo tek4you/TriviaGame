@@ -2,8 +2,8 @@ $(document).ready(function () {
 
 //Object which holds the questions and the answers
 
-var quiz = { 
-    questions: [{
+var quiz = [ 
+  {
       question: "Which is the core component of the computer? It computes every operation you want?",
       choices: ["Calculator", "Dynamo", "Processor", "Light Bulb"],
       answer: "Processor"
@@ -19,8 +19,8 @@ var quiz = {
       question: "When was the first Apple computer introduced?",
       choices: ["1971", "1981", "1976", "1979"],
       answer: "1976"
-      }]
-    }
+      }];
+    
 
     //Variable for time and right and wrong answers
 var qtimer= 30;
@@ -30,53 +30,62 @@ var incorrectAnswers = 0;
      
     //This function displays the question and multiple choice on the page
   function nextQuestion() {
-       
+
+       $('#question-line').empty;
     //Create loop to cycle through questions and answers
-    for (var i = 0; i < quiz.questions.length; i++) {
+    for (var i = 0; i < quiz.length; i++) {
      
       //Display questions
-      var questDiv = $("<div>");
-      questDiv.text = quiz.questions[i].question;
+      var questDiv = $("<ol>");
+      questDiv.text = quiz[i].question;
           console.log(questDiv.text);
+          var questId = "quest-" + i; 
+      var ask = $("<li>").text(questDiv.text)
+            .attr('id', questId)
+            .attr('type', "1");
+      $('#question-line').append(ask);
 
-      var ask = $("<div>").text(questDiv.text);
-      $("#question-line").append(ask);    
-
+        $("#"+ choiecId).empty();
       //Loop to display answer choices
-      for (var j = 0; j < quiz.questions[i].choices.length; j++) {
-           var answerList = $("<li>");
-        answerList.text = quiz.questions[i].choices[j];
+      // for (var j = 0; j < quiz.questions[i].choices.length; j++) {
+        for (var j = 0; j < quiz[i].choices.length; j++) {
+           var answerList = $("<ul>");
+        answerList.text = quiz[i].choices[j];
             console.log(answerList.text);
+            var choiceId = "q" + i "-cho-" + j;
+              console.log(choiceId);
 
-        var choice = $("<li>").text(answerList.text);
-        $(".choices").append(choice);
-        
-        //Add class to choices for on click function
+        var choice = $("<li>").text(answerList.text)
+              .attr('id', choiceId)
+              .attr('type', "a");
+              
+              $("#"+ questId).append(choice);
+        //  Add class to choices for on click function
         // choice.addClass("abcd");
-        $(choice).attr("class", "abcd");
+        // $(choice).attr("class", "abcd");
         };
       };
         //Set countdown clock
         countDownClock();
 
           //Capture user clicks
-      $(".abcd").on('click', function(event) {
-        console.log("you clicked");
+      // $(".abcd").on('click', function(event) {
+      //   console.log("you clicked");
 
-         //check if the clicked item was the correct answer
-        for (var k = 0; k < quiz.questions.length; k++) {
-          if (quiz.questions.choices[k] === quiz.questions.choices.answer) {
+      //    //check if the clicked item was the correct answer
+      //   for (var k = 0; k < quiz.length; k++) {
+      //     if (quiz.question.choices[k] === quiz.questions.choices.answer) {
         
-        //Increment correct answers
-        correctAnswers++; 
-          console.log(correctAnswers);
-      }
-        else {
-          //Increment incorrect answers
-        incorrectAnswers++
-         console.log(correctAnswers);
-        }}
-      });
+      //   //Increment correct answers
+      //   correctAnswers++; 
+      //     console.log(correctAnswers);
+      // }
+      //   else {
+      //     //Increment incorrect answers
+      //   incorrectAnswers++
+      //    console.log(correctAnswers);
+      //   }}
+      // });
        
         console.log(this);
       }
